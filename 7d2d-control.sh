@@ -4,7 +4,7 @@
 ## 7 Days to Die  - Linux dedicated server - Steamcmd - Management script 
 ##
 ## Description: Simple Bash shell script to ease management of 7 Days to Die Dedicated linux server 
-## Version : 1.1, 28.11.2014
+## Version : 1.0, 28.11.2014
 ## Author: mikezerosix 
 ##
 ## --------------------------
