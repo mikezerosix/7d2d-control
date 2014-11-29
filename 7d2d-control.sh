@@ -10,8 +10,9 @@
 ## --------------------------
 ## Quick how to for impatient
 ## --------------------------
-## 1. log in as the user you want to run the game with (which can not be root !!!) 
-## 2. copy this scrip to that user HOME and run it with param "update" : 
+## 0. log in as the user you want to run the game with (which can not be root !!!)
+## 1. copy this script to that user HOME and edit it for our Steam login username at line starting steam_user="" write your username inside the double quotes
+##  2.  and run it with param "update" :
 ##    7d2d-constrol.sh update 
 ##   -This installs everything 
 ## 3. go the 7d2d directory under the HOME and edit serverconfig.xml and serveradmin.xml files for the game settings 
