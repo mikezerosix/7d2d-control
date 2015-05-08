@@ -73,6 +73,11 @@ STEAM_CMD_DIR=${HOME_DIR}/steamcmd
 # use  "_64" for 64-bit, "" for 32-bit 
 bitCount=""
 
+#TODO: read from server_config.xml
+# grep -v "property name=\"TelnetPort\"" ${INSTALL_DIR}/serverconfig.xml
+#telnet port
+TELNET_PORT=8081
+
 
 # Do NOT change anything below here 
 # --------------------------------
@@ -119,10 +124,15 @@ case "$1" in
   
   stop)
     echo "Shutting down 7d2d..."
+    exec 3<>/dev/tcp/172.0.0.1/${TELNET_PORT]
     if [ ! -f ${PID_FILE} ]; then 
        echo "No pid file: ${PID_FILE} assuming the service is not running."
        exit 0
-    fi 
+    fi
+    echo "say Server going down in 10 seconds !">&3
+    sleep 10
+    echo "shutdown">&3
+    sleep 5
     /bin/kill -TERM `cat ${PID_FILE}`
     rm -f ${PID_FILE}
   ;;
