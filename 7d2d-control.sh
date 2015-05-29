@@ -124,7 +124,7 @@ case "$1" in
   
   stop)
     echo "Shutting down 7d2d..."
-    exec 3<>/dev/tcp/172.0.0.1/${TELNET_PORT]
+    exec 3<>/dev/tcp/172.0.0.1/${TELNET_PORT}
     if [ ! -f ${PID_FILE} ]; then 
        echo "No pid file: ${PID_FILE} assuming the service is not running."
        exit 0
