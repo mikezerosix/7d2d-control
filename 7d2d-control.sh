@@ -124,15 +124,17 @@ case "$1" in
   
   stop)
     echo "Shutting down 7d2d..."
-    exec 3<>/dev/tcp/172.0.0.1/${TELNET_PORT}
     if [ ! -f ${PID_FILE} ]; then 
        echo "No pid file: ${PID_FILE} assuming the service is not running."
        exit 0
     fi
+    echo "  ...trying gracefull shutdown (takes 10s)"
+    exec 3<>/dev/tcp/172.0.0.1/${TELNET_PORT}
     echo "say Server going down in 10 seconds !">&3
     sleep 10
     echo "shutdown">&3
     sleep 5
+    echo "  ...terminationg process"
     /bin/kill -TERM `cat ${PID_FILE}`
     rm -f ${PID_FILE}
   ;;
