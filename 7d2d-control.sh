@@ -56,9 +56,6 @@
 
 # ** CHANGE ME **
 # -----------------------------
-steam_user="CHANGEME"
-# -----------------------------
-
 
 # Change these values if needed
 # -----------------------------
@@ -71,7 +68,7 @@ PID_FILE=${HOME_DIR}/7d2d.pid
 STEAM_CMD_DIR=${HOME_DIR}/steamcmd
 
 # use  "_64" for 64-bit, "" for 32-bit
-bitCount=""
+bitCount="_64"
 
 #TODO: read from server_config.xml
 # grep -v "property name=\"TelnetPort\"" ${INSTALL_DIR}/serverconfig.xml
@@ -160,7 +157,7 @@ case "$1" in
     cp ${INSTALL_DIR}/serveradmin.xml ${BACKUP_DIR}/serveradmin.xml.`date -I`
 
     sleep 8
-    ${STEAM_CMD_DIR}/steamcmd.sh +@ShutdownOnFailedCommand 1 +login "${steam_user}" +force_install_dir "${INSTALL_DIR}" +app_update 294420 validate +quit
+    ${STEAM_CMD_DIR}/steamcmd.sh +@ShutdownOnFailedCommand 1 +login anonymous +force_install_dir "${INSTALL_DIR}" +app_update 294420 validate +quit
     sleep 5
     mv ${INSTALL_DIR}/serverconfig.xml ${INSTALL_DIR}/serverconfig.bk
     grep -v "property name=\"SaveGameFolder\"" ${INSTALL_DIR}/serverconfig.bk|grep -v "</ServerSettings>" > ${INSTALL_DIR}/serverconfig.xml
